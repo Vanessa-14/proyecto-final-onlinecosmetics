@@ -22,15 +22,15 @@ let usuarioSchema = new Schema({
         type: String,
         default: 'USER_ROLE',
     },
-    img: {
-     type: String,
-     required: [true, 'Por favor ingresa la imagen']
-     },
+    // img: {
+    //     type: String,
+    //     //required: [true, 'Por favor ingresa la imagen']
+    // },
     estado: {
         type: Boolean,
         default: true
     }
-   
+
 });
 //el esquema utilize el plugin
 usuarioSchema.plugin(uniqueValidator, {

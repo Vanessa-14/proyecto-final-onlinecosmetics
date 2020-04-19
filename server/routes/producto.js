@@ -2,6 +2,22 @@ const express = require('express');
 const _ = require('underscore');
 const Producto = require('../models/producto'); //subir nivel
 const app = express();
+//id
+app.get('/producto/:idcategoria', (req, res) => {
+    Producto.find({ categoria: req.params.idcategoria })
+        .exec((err, productos) => {
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    err
+                });
+            }
+            return res.status(200).json({
+                productos
+            });
+        });
+});
+
 
 app.get('/producto', (req, res) => {
 
@@ -30,6 +46,8 @@ app.post('/producto', (req, res) => {
         marca: body.marca,
         descripcion: body.descripcion,
         color: body.color,
+        precio: body.precio,
+        categoria: body.categoria,
         estado: body.estado,
     });
 
@@ -49,7 +67,7 @@ app.post('/producto', (req, res) => {
 
 app.put('/producto/:id', (req, res) => {
     let id = req.params.id;
-    let body = _.pick(req.body, ['img', 'nombre', 'marca', 'descripcion', 'color','estado']);
+    let body = _.pick(req.body, ['img', 'nombre', 'marca', 'descripcion', 'color', 'precio', 'categoria', 'estado']);
     producto.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, produDB) => {
         if (err) {
             return res.status(400).json({

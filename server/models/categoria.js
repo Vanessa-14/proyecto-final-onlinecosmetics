@@ -13,7 +13,11 @@ let categoriaSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: [true, 'Por favor ingresa el nombre del usuario']
-    }, 
+    },
+    img: {
+        type: String
+
+    },
     estado: {
         type: Boolean,
         default: true
@@ -22,7 +26,7 @@ let categoriaSchema = new Schema({
 
 });
 
-    //el esquema utilize el plugin
+//el esquema utilize el plugin
 categoriaSchema.plugin(uniqueValidator, {
     message: '{PATH} Debe ser único y diferente'
 });

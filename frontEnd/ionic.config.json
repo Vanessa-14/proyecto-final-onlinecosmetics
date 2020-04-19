@@ -1,5 +1,7 @@
 {
-  "name": "cosmetics-frontEnd",
-  "integrations": {},
+  "name": "frontEnd",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

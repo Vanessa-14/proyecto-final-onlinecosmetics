@@ -1,0 +1,32 @@
+<ion-content>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <form class="needs-validation" (ngSubmit)="login(form)" #form="ngForm">
+        <div class="container-md">
+            <div class="form-group" padding>
+                <ion-item>
+                    <ion-icon name="person-outline"></ion-icon>
+                    <ion-input class="form-control" type=" text " [(ngModel)]="usuario.email" name="usuario" placeholder="UserName " #email="ngModel" [ngClass]="{ 'is-invalid': !email.valid && email.touched,'is-valid': email.valid}" required></ion-input>
+                </ion-item>
+            </div>
+
+            <div class="form-group" padding>
+                <ion-item>
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <ion-input class="form-control" type="Password" [(ngModel)]="usuario.password" name="usuario" placeholder="Password " #password="ngModel" [ngClass]="{ 'is-invalid': !password.valid && password.touched,'is-valid': password.valid}" required></ion-input>
+                </ion-item>
+            </div>
+            <br>
+            <ion-button (click)="login()" shape="round" size="default" fill="solid" color="dark" expand="block" [disabled]="!form.valid">Iniciar sesion</ion-button>
+
+            <div class="col">
+                <div class="input-field  ">
+                    <p>No tiene una cuenta? Puedes crear una</p>
+
+                    <ion-button shape="round" size="default" fill="solid" color="dark" (click)="registrar()">Crear cuenta</ion-button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+</ion-content>
