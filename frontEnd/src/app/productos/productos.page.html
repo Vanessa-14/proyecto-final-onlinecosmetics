@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="dark">
+        <ion-title>
+            Agregar producto
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="ion-padding">
+        <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" [(ngModel)]='nombre'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Marca</ion-label>
+            <ion-input type="text" [(ngModel)]='marca'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Descripcion</ion-label>
+            <ion-textarea [(ngModel)]='descripcion'></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Color</ion-label>
+            <ion-input type="text" [(ngModel)]='color'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Precio</ion-label>
+            <ion-input type="number" [(ngModel)]='precio'></ion-input>
+        </ion-item>
+        <ion-button color="dark">
+            <ion-icon name="camera"></ion-icon>
+        </ion-button>
+        <ion-button expand="full" (click)="addProduct()" color="dark">
+            <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+
+
+        <h3 color="secondary">Productos</h3>
+        <ion-card *ngFor="let item of products">
+            <ion-card-header>
+                <ion-card-subtitle>{{item.nombre}}</ion-card-subtitle>
+                <ion-card-subtitle>{{item.marca}}</ion-card-subtitle>
+                <ion-card-subtitle>{{item.descripcion}}</ion-card-subtitle>
+                <ion-card-subtitle>{{item.color}}</ion-card-subtitle>
+                <ion-card-title>{{item.precio}}</ion-card-title>
+                <ion-button style="float: right;" color="danger" (click)="deleteProduct(item._id)">X</ion-button>
+            </ion-card-header>
+
+
+            <!-- <ion-card  *ngFor="let item of pedidos">
+                <ion-card-header>
+                    <ion-card-subtitle>{{item.usuario}}</ion-card-subtitle>
+                    <ion-card-title>{{item.producto}}</ion-card-title>
+                    </ion-card-header>
+                    <ion-button style="float: right;" color="danger" (click)=" deletePedido(item._id)">X</ion-button>
+            </ion-card> -->
+
+        </ion-card>
+
+
+
+
+
+
+
+    </div>
+
+</ion-content>

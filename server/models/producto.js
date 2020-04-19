@@ -6,22 +6,31 @@ let Schema = mongoose.Schema;
 let productoSchema = new Schema({
     img: {
         type: String,
-        required: [true, 'Por favor ingresa la imagen']
     },
-    nombre: { 
-        type: String, 
-        required: [true, 'Porfavor ingresa el nombre' ] 
+    nombre: {
+        type: String,
+        required: [true, 'Porfavor ingresa el nombre']
     },
-    marca: { 
-        type : String, 
-        required: [true, 'Porfavor ingresa la marca' ]
+    marca: {
+        type: String,
+        required: [true, 'Porfavor ingresa la marca']
     },
-    descripcion: { 
-        type : String, 
-        required: [true, 'Porfavor ingresa la descripcion'] },
-    color: { 
-        type : String, 
-        required: [true, 'Porfavor ingresa el color'] 
+    descripcion: {
+        type: String,
+        required: [true, 'Porfavor ingresa la descripcion']
+    },
+    color: {
+        type: String,
+        required: [true, 'Porfavor ingresa el color']
+    },
+    precio: {
+        type: String,
+        required: [true, 'Porfavor ingresa el precio']
+    },
+    categoria: {
+        type: Schema.Types.ObjectId,
+        ref: 'Categoria',
+        //required: [false, 'Por favor ingresa la categoria']
     },
     estado: {
         type: Boolean,
