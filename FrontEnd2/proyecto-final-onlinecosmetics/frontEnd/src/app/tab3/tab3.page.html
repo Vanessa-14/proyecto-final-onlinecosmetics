@@ -1,0 +1,53 @@
+
+  
+  <ion-content>
+    <div class="ion-padding">
+      <h3 color="secondary">Agregar pedido</h3>
+      <ion-item>
+        <ion-label position="floating">Nombre completo</ion-label>
+        <ion-input type="text" [(ngModel)]='usuario'></ion-input>
+      </ion-item>
+    
+        <ion-item>
+            <ion-label >Productos</ion-label>
+            <ion-select [(ngModel)]='producto' >
+                <ion-select-option *ngFor="let item of productos" > {{item.marca}} </ion-select-option>
+               
+            </ion-select>
+        </ion-item>
+    
+    <ion-item>
+        <ion-label> Cantidad</ion-label>
+        <ion-select [(ngModel)]='cantidad' value="brown" okText="Aceptar" cancelText="Cancelar">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+        
+      </ion-item>
+    <!-- <ion-item>
+        <ion-label position="floating">Cantidad</ion-label>
+        <ion-input type="number" [(ngModel)]='cantidad' ></ion-input>
+    </ion-item> -->
+    
+    <ion-button expand="full" color="dark" (click)="addPedido()">
+        <ion-icon name="add-circle-outline" ></ion-icon>
+    </ion-button>
+    <ion-card  *ngFor="let item of pedidos">
+        <ion-card-header>
+            <ion-card-subtitle>{{item.usuario}}</ion-card-subtitle>
+            <ion-card-title>{{item.producto}}</ion-card-title>
+            </ion-card-header>
+            <ion-button style="float: right;" color="danger" (click)=" deletePedido(item._id)">X</ion-button>
+    </ion-card>
+    </div>
+
+    
+</ion-content>
