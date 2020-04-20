@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="dark">
+        <ion-title>
+            <!-- Categoria: {{categorias.descripcion}} -->
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-list *ngFor="let item of productos ">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle>{{item.descripcion}}</ion-card-subtitle>
+              <ion-card-title>{{item.marca}}</ion-card-title>
+              
+            </ion-card-header>
+            <ion-card-content> 
+                ${{item.precio}} MX
+                <ion-button color="danger" class="button" (click)="redireccionar()" >  
+                    <ion-icon name="cart"></ion-icon></ion-button>
+            </ion-card-content>
+            
+          </ion-card>
+    </ion-list>
+
+
+</ion-content>
