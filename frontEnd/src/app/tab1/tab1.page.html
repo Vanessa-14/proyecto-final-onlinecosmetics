@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="dark">
+
+        <ion-title>
+            Home
+            <ion-icon name="person-remove"></ion-icon>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <!-- <tr *ngFor="let categoria of categorias |filter:searchTex"></tr>  -->
+    <ion-searchbar placeholder="Buscar categoria" inputmode="decimal" [(ngModel)]=buscarcategoria showCancelButton="focus"></ion-searchbar>
+
+    <ion-list *ngFor="let item of categorias">
+        <ion-item (click)="redireccionar(item._id)">
+
+            <ion-label>
+                <h4>{{item.nombre}} </h4>
+                <p> {{ item.descripcion }}</p>
+            </ion-label>
+            <ion-button expand="block" fill="clear" shape="round">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
+        </ion-item>
+    </ion-list>
+
+
+</ion-content>

@@ -31,8 +31,7 @@ app.post('/usuario', (req, res) => {
         nombre: body.nombre,
         email: body.email,
         password: bcrypt.hashSync(body.password, 10), //numero de veces de encriptar
-        role: body.role, 
-        img: body.img,
+        role: body.role,
         estado: body.estado
     });
 
@@ -59,7 +58,6 @@ app.post('/registro', (req, res) => {
         email: body.email,
         password: bcrypt.hashSync(body.password, 10), //numero de veces de encriptar
         role: body.role,
-        img: body.img,
         estado: body.estado
     });
 
@@ -78,9 +76,9 @@ app.post('/registro', (req, res) => {
 });
 
 
-app.put('/usuario/:id',(req, res) => {
+app.put('/usuario/:id', (req, res) => {
     let id = req.params.id;
-    let body = _.pick(req.body, ['nombre', 'email', 'password', 'estado', 'role', 'img']); //FILTRAR del body, on el pick seleccionar los campos que interesan del body 
+    let body = _.pick(req.body, ['nombre', 'email', 'password', 'estado', 'role']); //FILTRAR del body, on el pick seleccionar los campos que interesan del body 
     //id 'su coleccion, new -> si no existe lo inserta, runVali-> sirve para validar todas las condiciones del modelo 
     Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, usrDB) => {
         if (err) {

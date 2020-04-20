@@ -1,0 +1,30 @@
+<ion-content>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <form (ngSubmit)="registroUsuario(forma)" #forma="ngForm">
+        <div class="container-md">
+            <div padding>
+                <ion-item>
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input class="form-control" id="validationServer01" type=" text " name="nombre" [(ngModel)]="usuario.nombre" #nombre="ngModel" required placeholder="Nombre">
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input class="form-control" id="validationServer02" type="text" name="email" [(ngModel)]="usuario.email" #email="ngModel" required placeholder="Email">
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input class="form-control" id="validationServer03" type="Password" name="password" [(ngModel)]="usuario.password" #password="ngModel" required placeholder="Password ">
+                </ion-item>
+            </div>
+            <br>
+
+            <div padding>
+                <ion-button (click)="registroUsuario()" [disabled]="!forma.valid" shape="round" size="default" fill="solid" color="dark" expand="block">Registrar</ion-button>
+                <ion-button size="large" expand="block" shape="round" size="default" fill="solid" color="warning" (click)="return()">Cancelar</ion-button>
+            </div>
+
+
+        </div>
+    </form>
+
+</ion-content>

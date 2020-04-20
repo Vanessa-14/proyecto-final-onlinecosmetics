@@ -44,7 +44,7 @@ app.post('/categoria', (req, res) => {
     let categoria = new Categoria({
         nombre: body.nombre,
         descripcion: body.descripcion,
-        img:  body.img,
+        img: body.img,
         estado: body.estado
     });
 

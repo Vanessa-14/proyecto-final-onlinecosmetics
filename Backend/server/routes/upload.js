@@ -1,12 +1,13 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
+const { verificaToken } = require('../middlewares/autenticacion');
 const uniqid = require('uniqid');
 const path = require('path');
 const fs = require('fs');
 const app = express();
 
-const Categoria = require('../models/categoria');
-const Producto = require('../models/producto');
+const Usuario = require('../models/usuario');
+const Libro = require('../models/producto');
 
 app.use(fileUpload());
 
@@ -49,8 +50,8 @@ app.put('/upload/:ruta/:id', (req, res) =>{
             imagenProducto(id, res, nombre)
         break;
 
-        case 'categoria':
-            imagenCategoria(id, res, nombre);
+        case 'usuario':
+            imagenUsuario(id, res, nombre);
         break;
         default: 
         return res.status(400).json({
@@ -64,8 +65,46 @@ app.put('/upload/:ruta/:id', (req, res) =>{
 
 });
 
-function imagenProducto(id, res, nombreImagen){ //Actualizar el modelo producto Relaciona la imagen con una colleccion 
-    Producto.findById(id, (err, prod)=>{
+function imagenUsuario(id, res, nombreImagen){ //Actualizar el modelo usuario El hilo del usuario 
+    Usuario.findById(id, (err, usr)=>{
+        if (err) {
+            borrarArchivo(nombreImagen, 'usuario');
+            return res.status(400).json({
+                ok: false,
+                err
+            });
+        }
+        if (!usr) {
+            borrarArchivo(nombreImagen, 'usuario');
+            return res.status(400).json({
+                ok: false,
+                err:{
+                    message: 'Usuario no existe'
+                }
+            }); 
+        }
+        usr.img = nombreImagen;
+
+        usr.save((err, usrDB)=>{
+            if (err) {
+                borrarArchivo(nombreImagen, 'usuario');
+                return res.status(400).json({
+                    ok: false,
+                    err
+                });
+            }
+
+            return res.status(200).json({
+                ok: true, 
+                usrDB
+            });
+        });
+
+    });
+}
+
+function imagenProducto(id, res, nombreImagen){ //Actualizar el modelo libro  Relaciona la imagen con una colleccion 
+    Libro.findById(id, (err, prod)=>{
         if (err) {
             borrarArchivo(nombreImagen, 'producto');
             return res.status(400).json({
@@ -86,7 +125,7 @@ function imagenProducto(id, res, nombreImagen){ //Actualizar el modelo producto 
 
         prod.save((err, produDB)=>{
             if (err) {
-                borrarArchivo(nombreImagen, 'producto');
+                borrarArchivo(nombreImagen, 'libro');
                 return res.status(400).json({
                     ok: false,
                     err
@@ -96,44 +135,6 @@ function imagenProducto(id, res, nombreImagen){ //Actualizar el modelo producto 
             return res.status(200).json({
                 ok: true, 
                 produDB
-            });
-        });
-
-    });
-}
-
-function imagenCategoria(id, res, nombreImagen){ //Actualizar el modelo usuario El hilo del usuario 
-    Categoria.findById(id, (err, cat)=>{
-        if (err) {
-            borrarArchivo(nombreImagen, 'categoria');
-            return res.status(400).json({
-                ok: false,
-                err
-            });
-        }
-        if (!cat) {
-            borrarArchivo(nombreImagen, 'categoria');
-            return res.status(400).json({
-                ok: false,
-                err:{
-                    message: 'Categoria no existe'
-                }
-            }); 
-        }
-        cat.img = nombreImagen;
-
-        cat.save((err, catDB)=>{
-            if (err) {
-                borrarArchivo(nombreImagen, 'categoria');
-                return res.status(400).json({
-                    ok: false,
-                    err
-                });
-            }
-
-            return res.status(200).json({
-                ok: true, 
-                catDB
             });
         });
 

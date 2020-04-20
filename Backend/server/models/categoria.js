@@ -7,12 +7,12 @@ let Schema = mongoose.Schema;
 let CategoriaSchema = new Schema({
     nombre: {
         type: String,
-        required: [true, 'Por favor ingresa el nombre del usuario']
+        required: [true, 'Por favor ingresa el nombre de la categoria']
     },
     descripcion: {
         type: String,
         unique: true,
-        required: [true, 'Por favor ingresa el email']
+        required: [true, 'Por favor ingresa la descripcion']
     },
     img: {
         type: String,
@@ -21,7 +21,7 @@ let CategoriaSchema = new Schema({
         type: Boolean,
         default: true
     }
-   
+
 });
 //el esquema utilize el plugin
 CategoriaSchema.plugin(uniqueValidator, {

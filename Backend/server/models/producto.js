@@ -7,30 +7,30 @@ let productoSchema = new Schema({
     img: {
         type: String,
     },
-    nombre: { 
-        type: String, 
-        required: [true, 'Porfavor ingresa el nombre' ] 
+    nombre: {
+        type: String,
+        required: [true, 'Porfavor ingresa el nombre']
     },
-    marca: { 
-        type : String, 
-        required: [true, 'Porfavor ingresa la marca' ]
+    marca: {
+        type: String,
+        required: [true, 'Porfavor ingresa la marca']
     },
-    descripcion: { 
-        type : String, 
-        required: [true, 'Porfavor ingresa la descripcion'] 
+    descripcion: {
+        type: String,
+        required: [true, 'Porfavor ingresa la descripcion']
     },
-    color: { 
-        type : String, 
-        required: [true, 'Porfavor ingresa el color'] 
+    color: {
+        type: String,
+        required: [true, 'Porfavor ingresa el color']
     },
-    precio:{
-        type: Number,
+    precio: {
+        type: String,
         required: [true, 'Porfavor ingresa el precio']
     },
     categoria: {
         type: Schema.Types.ObjectId,
         ref: 'Categoria',
-        required: [true, 'Por favor ingresa la categoria']
+        //required: [false, 'Por favor ingresa la categoria']
     },
     estado: {
         type: Boolean,

@@ -7,23 +7,23 @@ const Usuario = require('./usuario');
 let Schema = mongoose.Schema;
 
 let pedidoSchema = new Schema({
-    
+
     usuario: {
         type: String,
         required: [true, 'Por favor ingresa el nombre del usuario']
     },
-    producto:{
-        type:String,
-         required: [true, 'Por favor ingrese el producto']
+    producto: {
+        type: String,
+        required: [true, 'Por favor ingrese el producto']
     },
-    cantidad:{
+    cantidad: {
         type: Number,
         required: [true, 'Por favor ingresa la cantidad']
 
     },
-    estado:{
-        type:Boolean,
-        default:true
+    estado: {
+        type: Boolean,
+        default: true
     }
 });
 

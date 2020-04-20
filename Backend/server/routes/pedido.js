@@ -59,7 +59,7 @@ app.post('/pedido', (req, res) => {
 
 app.put('/pedido/:id', (req, res) => {
     let id = req.params.id;
-    let body = _.pick(req.body, [ 'usuario','producto','cantidad', 'estado']);
+    let body = _.pick(req.body, ['usuario', 'producto', 'cantidad', 'estado']);
     Pedido.findByIdAndUpdate(id, body, { new: true, runValidators: true, context: 'query' }, (err, pedDB) => {
         if (err) {
             return res.status(400).json({
